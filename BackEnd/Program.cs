@@ -16,6 +16,18 @@ builder.Services.AddDbContext<FlashCardContext>(opts =>
     opts.UseSqlServer(connectionString)
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200", "http://flashcardapp-kevincornell.azurewebsites.net")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .AllowCredentials();
+        });
+});
+
 builder.Services.AddMvc().AddControllersAsServices();
 builder.Services.AddControllers();
 
@@ -27,6 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
