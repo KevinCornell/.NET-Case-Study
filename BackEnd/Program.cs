@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200", "http://flashcardapp-kevincornell.azurewebsites.net")
+            policy.WithOrigins("http://localhost:4200", "https://flashcardapp-kevincornell.azurewebsites.net")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
