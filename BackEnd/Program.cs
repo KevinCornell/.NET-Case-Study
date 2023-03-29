@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 
+//small change
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
