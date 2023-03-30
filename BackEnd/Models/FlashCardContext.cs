@@ -8,4 +8,13 @@ public class FlashCardContext : DbContext
     { }
 
     public DbSet<FlashCard> FlashCards { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<FlashCard>(entity =>
+        {
+            entity.HasKey(x => x.id).HasName("PRIMARY");
+            entity.ToTable("mySampleDatabase", "dbo");
+        });
+    }
 }

@@ -18,14 +18,15 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FlashCard>>> GetAll()
         {
-            try
-            {
-                return await _context.FlashCards.ToListAsync();
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            //try
+            //{
+            //    return await _context.FlashCards.ToListAsync();
+            //}
+            //catch
+            //{
+            //    return BadRequest();
+            //}
+            return await _context.FlashCards.ToListAsync();
         }
 
         [Route("api/Flashcards")]
