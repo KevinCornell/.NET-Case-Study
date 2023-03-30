@@ -14,7 +14,7 @@ public class FlashCardContext : DbContext
         modelBuilder.Entity<FlashCard>(entity =>
         {
             entity.HasKey(x => x.id).HasName("PRIMARY");
-            entity.ToTable("mySampleDatabase", "dbo");
+            entity.ToTable("FlashCards", "dbo");
         });
     }
 }
