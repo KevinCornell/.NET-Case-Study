@@ -1,0 +1,65 @@
+.Website-Title {
+  padding-top: 20px;
+  font-size: xxx-large;
+}
+
+.Flashcard {
+  width: 500px;
+  height: 300px;
+  color: black;
+  background-color: white;
+}
+
+.Options-Div {
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+}
+
+.Options-Spacing {
+  padding-left: 10px;
+}
+
+.Option {
+  width: 175px;
+  height: 40px;
+  font-size: large;
+  color: white;
+  background-color: blue;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.Card-Column {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-content {
+  height: 225px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.Answer-Button {
+  font-size: medium;
+  width: 150px;
+  height: 40px;
+  color: white;
+  background-color: blue;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.on {
+  background-color: blue;
+}
+
+.off {
+  background-color: lightblue;
+}

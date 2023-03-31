@@ -1,0 +1,33 @@
+<div class="Card-Column">
+  <h1 class="Website-Title">
+    {{title}}
+  </h1>
+</div>
+<div class="Options-Div">
+  <div class="Options-Spacing">
+    <button class="Option">
+      Card/Table Toggle
+    </button>
+  </div>
+  <div class="Options-Spacing">
+    <button class="Option">
+      Add Flashcard
+    </button>
+  </div>
+</div>
+<div class="Card-Column">
+  <mat-card class="Flashcard">
+    <mat-card-content>
+      <h2>
+        This is the contents of the question
+      </h2>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="Answer-Button">
+        Show Answer
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<router-outlet></router-outlet>
