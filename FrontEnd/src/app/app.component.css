@@ -3,6 +3,11 @@
   font-size: xxx-large;
 }
 
+button:hover {
+  color: black;
+  background-color: lightblue;
+}
+
 .Flashcard {
   width: 500px;
   height: 300px;
@@ -33,6 +38,7 @@
 .Card-Column {
   display: flex;
   justify-content: center;
+  padding-bottom: 30px;
 }
 
 mat-card-content {
@@ -56,10 +62,12 @@ mat-card-actions {
   border-radius: 10px;
 }
 
-.on {
+.Option-Card {
+  font-size: small;
+  width: 80px;
+  height: 20px;
+  color: white;
   background-color: blue;
-}
-
-.off {
-  background-color: lightblue;
+  border: 0px;
+  border-radius: 5px;
 }

@@ -5,7 +5,7 @@
 </div>
 <div class="Options-Div">
   <div class="Options-Spacing">
-    <button class="Option">
+    <button class="Option" (click)="Toggle()">
       Card/Table Toggle
     </button>
   </div>
@@ -15,19 +15,43 @@
     </button>
   </div>
 </div>
-<div class="Card-Column">
-  <mat-card class="Flashcard">
-    <mat-card-content>
-      <h2>
-        This is the contents of the question
-      </h2>
-    </mat-card-content>
-    <mat-card-actions>
-      <button class="Answer-Button">
-        Show Answer
-      </button>
-    </mat-card-actions>
-  </mat-card>
+<div *ngIf="tableView">
+  <div class="Card-Column" *ngFor="let flashcard of flashcards">
+    <mat-card class="Flashcard">
+      <mat-card-content>
+        <h2>
+          {{flashcard.question}}
+        </h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="Answer-Button" (click)="ShowAnswer(flashcard)">
+          Show Answer
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="!tableView">
+  <table mat-table [dataSource]="flashcards">
+
+    <ng-container matColumnDef="Question">
+      <th mat-header-cell *matHeaderCellDef>Question</th>
+      <td mat-cell *matCellDef="let flashcard">{{flashcard.question}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Answer">
+      <th mat-header-cell *matHeaderCellDef>Answer</th>
+      <td mat-cell *matCellDef="let flashcard">{{flashcard.answer}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Options">
+      <th mat-header-cell *matHeaderCellDef>Options</th>
+      <td mat-cell *matCellDef="let flashcard"><button class="Option-Card">Eidt</button><button class="Option-Card">Delete</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
 
 <router-outlet></router-outlet>
