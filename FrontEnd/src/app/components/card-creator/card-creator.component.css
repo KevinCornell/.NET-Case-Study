@@ -1,0 +1,13 @@
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.actions-spacing {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input-spacing {
+  padding-bottom: 30px;
+}

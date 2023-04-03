@@ -10,7 +10,7 @@
     </button>
   </div>
   <div class="Options-Spacing">
-    <button class="Option" (click)="CreateFlashcard()">
+    <button class="Option" (click)="OpenCardCreator()">
       Add Flashcard
     </button>
   </div>
@@ -53,7 +53,7 @@
 
     <ng-container matColumnDef="Options">
       <th mat-header-cell *matHeaderCellDef>Options</th>
-      <td mat-cell *matCellDef="let flashcard"><button class="Option-Card" (click)="EditFlashcard(flashcard)">Edit</button><button class="Option-Card" (click)="DeleteFlashcard(flashcard)">Delete</button></td>
+      <td mat-cell *matCellDef="let flashcard"><button class="Option-Card" (click)="OpenCardEditor(flashcard)">Edit</button><button class="Option-Card" (click)="DeleteFlashcard(flashcard)">Delete</button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
