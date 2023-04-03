@@ -1,9 +1,9 @@
 import { IFlashcard } from './flashcardinterface';
 
 export class FlashcardDTO implements IFlashcard {
-  id?: string | undefined;
-  question?: string | undefined;
-  answer?: string | undefined;
+  id: string;
+  question: string;
+  answer: string;
 
   constructor(id: string, question:string, answer: string) {
     this.id = id;
