@@ -21,7 +21,7 @@ export class CardCreatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dialogRef.updateSize('400px', '400px');
+    this.dialogRef.updateSize('300px', '475px');
     this.form = this.fb.group({
       question: [this.card.question, []],
       answer: [this.card.answer, []]

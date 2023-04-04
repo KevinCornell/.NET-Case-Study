@@ -71,3 +71,15 @@ mat-card-actions {
   border: 0px;
   border-radius: 5px;
 }
+
+mat-icon {
+  padding-left: 20px;
+}
+
+.Delete-Option:hover {
+  color: red;
+}
+
+.Edit-Option:hover {
+  color: orange;
+}

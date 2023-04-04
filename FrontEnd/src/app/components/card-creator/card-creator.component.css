@@ -11,3 +11,8 @@ mat-dialog-actions {
 .input-spacing {
   padding-bottom: 30px;
 }
+
+textarea {
+  width: 100%;
+  height: 50px;
+}
