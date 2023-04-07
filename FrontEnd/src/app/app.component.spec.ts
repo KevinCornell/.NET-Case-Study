@@ -3,9 +3,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FlashcardService } from './services/flashcard.service';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { Flashcard, FlashcardDTO } from './models/flashcard/flashcard';
+
+export class MatDialogMock {
+  open() {
+    return {
+      afterClosed: () => of({id: '0', qustion: 'q0', answer: 'a0'})
+    };
+  }
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -18,7 +26,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers: [FlashcardService]
+      providers: [
+        FlashcardService,
+        {provide: MatDialog, useClass: MatDialogMock}
+      ]
     }).compileComponents();
   });
 
@@ -55,7 +66,7 @@ describe('AppComponent', () => {
 
     //I don't think I have a way of testing/mocking if a
     //Component gets infromation from a service. So
-    // calling ngOnInit() gets an empty array.
+    //calling ngOnInit() gets an empty array.
     const expected: Flashcard[] = [];
 
     expect(app.flashcards).toEqual(expected);
@@ -105,6 +116,48 @@ describe('AppComponent', () => {
     app.ShowAnswer(flashcards[2]);
 
     expect(app.RevealedAnswer(flashcards[2])).toEqual(true);
+  });
+
+  it('should create a flashcard', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    app.CreateFlashcard('q0', 'a0');
+
+    const expected: Flashcard[] = [];
+
+    expect(app.flashcards).toEqual(expected);
+  });
+
+  it('should edit a flashcard', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    let f0: Flashcard = new Flashcard(new FlashcardDTO('0', 'q0', 'a0'));
+    app.EditFlashcard(f0);
+
+    const expected: Flashcard[] = [];
+
+    expect(app.flashcards).toEqual(expected);
+  });
+
+  it('should open OpenCardCreator', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    app.OpenCardCreator();
+
+    expect(app).toBeTruthy();
+  });
+
+  it('should open OpenCardEditor', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+
+    let f0: Flashcard = new Flashcard(new FlashcardDTO('0', 'q0', 'a0'));
+    app.OpenCardEditor(f0);
+
+    expect(app).toBeTruthy();
   });
 
 });

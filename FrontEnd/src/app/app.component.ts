@@ -57,7 +57,7 @@ export class AppComponent {
     this.tableView = !this.tableView;
   }
 
-  CreateFlashcard(question: string, answer: string) {
+  CreateFlashcard(question: string | undefined, answer: string | undefined) {
     let card: FlashcardDTO;
     if (question != null && answer != null) {
       card = new FlashcardDTO('3fa85f64-5717-4562-b3fc-2c963f66afa6', question, answer);
@@ -98,7 +98,7 @@ export class AppComponent {
     const dialogRef = this.dialog.open(CardCreatorComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      (data) => {
+      (data: Flashcard) => {
         this.CreateFlashcard(data.question, data.answer);
       }
     );
@@ -115,7 +115,7 @@ export class AppComponent {
     const dialogRef = this.dialog.open(CardEditorComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      (data) => {
+      (data: Flashcard) => {
         card.question = data.question;
         card.answer = data.answer;
         this.EditFlashcard(card);

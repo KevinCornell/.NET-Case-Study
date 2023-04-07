@@ -11,7 +11,8 @@ describe('CardEditorComponent', () => {
     afterClosed() {
       return of(true);
     },
-    updateSize(widths?:string, height?:string){}
+    updateSize(widths?:string, height?:string){},
+    close(){return true}
   };
   const dialogMock = {
     open:() => dialogRefMock
@@ -38,4 +39,12 @@ describe('CardEditorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return nothing if closed', () => {
+    expect(component.Close()).toEqual(undefined);
+  });
+
+  it('should return a flashcard if saved', () => {
+    expect(component.Save()).toEqual(undefined);
+  })
 });

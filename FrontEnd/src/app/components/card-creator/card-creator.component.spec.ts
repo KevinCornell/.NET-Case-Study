@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatDialog } from '@angu
 import { CardCreatorComponent } from './card-creator.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
+import { Flashcard, FlashcardDTO } from 'src/app/models/flashcard/flashcard';
 
 describe('CardCreatorComponent', () => {
   let component: CardCreatorComponent;
@@ -11,7 +12,8 @@ describe('CardCreatorComponent', () => {
     afterClosed() {
       return of(true);
     },
-    updateSize(widths?:string, height?:string){}
+    updateSize(widths?:string, height?:string){},
+    close(){return of(true)}
   };
   const dialogMock = {
     open:() => dialogRefMock
@@ -38,4 +40,12 @@ describe('CardCreatorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return nothing if closed', () => {
+    expect(component.Close()).toEqual(undefined);
+  });
+
+  it('should return a flashcard if saved', () => {
+    expect(component.Save()).toEqual(undefined);
+  })
 });
